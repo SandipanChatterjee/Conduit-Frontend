@@ -1,6 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import Pagination from "../Paginate";
 import axios from "../../eaxios";
+import Display from "../DisplayArticle/Display";
 interface Props {
   tagApi: boolean;
   tagName: string;
@@ -15,7 +17,6 @@ const TagsListing: React.FC<Props> = (props) => {
 
   // Get current posts
   const indexOfLastPost = currentPage * postsPerPage - 10;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
 
   // Change page
   const paginate = (pageNumber: any) => {
@@ -49,33 +50,11 @@ const TagsListing: React.FC<Props> = (props) => {
 
   return (
     <div>
-      {articles?.length > 0
-        ? articles.map((article: any) => {
-            return (
-              <div className="container">
-                <div>
-                  <div>
-                    <img src="https://static.productionready.io/images/smiley-cyrus.jpg" />
-                    <p>{article?.author?.username}</p>
-                  </div>
-
-                  <h3>{article.title}</h3>
-                  <p>{article.description}</p>
-                  <span>Read More...</span>
-                  <hr></hr>
-                </div>
-                <div>
-                  <span
-                    className="likeBtn"
-                    onClick={() => likeHandler(article.slug)}
-                  >
-                    Like
-                  </span>
-                </div>
-              </div>
-            );
-          })
-        : "Loading tags.."}
+      {articles?.length > 0 ? (
+        <Display articles={articles} />
+      ) : (
+        "Loading tags.."
+      )}
       <div>
         {articles.length > 0 ? (
           <Pagination

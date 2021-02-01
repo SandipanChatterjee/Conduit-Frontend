@@ -4,8 +4,8 @@ import React, { useEffect, useState } from "react";
 import axios from "../../eaxios";
 import { getModalStyle, modalStyles } from "../../Utils/StyleUtils";
 import Pagination from "../Paginate";
-import { Link } from "react-router-dom";
 import "./GlobalFeed.css";
+import Display from "../DisplayArticle/Display";
 
 const GlobalFeed: React.FC = (props) => {
   const [articles, setArticle] = useState<{}[]>([]);
@@ -53,37 +53,7 @@ const GlobalFeed: React.FC = (props) => {
 
   return (
     <div>
-      {articles?.length > 0
-        ? articles.map((article: any, index: number) => {
-            return (
-              <div className="article-preview">
-                <div className="article-meta">
-                  <Link to="#">
-                    <img
-                      src="https://static.productionready.io/images/smiley-cyrus.jpg"
-                      alt="img"
-                    />
-                  </Link>
-                  <div className="info">
-                    <Link to="#">{article?.author?.username}</Link>
-                    <span className="date">{article?.createdAt}</span>
-                  </div>
-                  <div className="pull-xs-right">
-                    <button className="btn btn-sm btn-outline-primary">
-                      <i className="ion-heart"></i>0
-                    </button>
-                  </div>
-                  <Link to="#" className="preview-link">
-                    <h1>{article.title}</h1>
-                    <p>{article.description}</p>
-                    <span>Read More...</span>
-                    <ul className="tag-list"></ul>
-                  </Link>
-                </div>
-              </div>
-            );
-          })
-        : "loading.."}
+      {articles?.length > 0 ? <Display articles={articles} /> : "loading.."}
       <div>
         {articles.length > 0 ? (
           <Pagination
