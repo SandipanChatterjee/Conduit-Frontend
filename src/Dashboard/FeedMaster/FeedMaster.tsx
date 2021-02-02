@@ -5,6 +5,7 @@ import GlobalFeed from "../GlobalFeed/GlobalFeed";
 import Tags from "../Tags/Tags";
 import TagsListing from "../Tags/TagsListing";
 import UserFeed from "../UserFeed";
+import Banner from "./Banner";
 import "./FeedMaster.css";
 
 const TabPanel = (props: any) => {
@@ -53,10 +54,7 @@ const FeedMaster: React.FC = () => {
 
   return (
     <div>
-      <div className="banner">
-        <h3 className="logo-font">Conduit</h3>
-        <p>A place to share your knowledge.</p>
-      </div>
+      <Banner profile={false} />
       <div className="container">
         <div>
           <AppBar position="static">

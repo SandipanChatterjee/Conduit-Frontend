@@ -18,7 +18,9 @@ const Display: React.FC<Props> = ({ articles }) => {
                 />
               </Link>
               <div className="info">
-                <Link to="#">{article?.author?.username}</Link>
+                <Link to={`/` + article?.author?.username}>
+                  {article?.author?.username}
+                </Link>
                 <span className="date">{article?.createdAt}</span>
               </div>
               <div className="pull-xs-right">
