@@ -1,12 +1,13 @@
 import { AppBar, Box, Tab, Tabs, Typography } from "@material-ui/core";
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import GlobalFeed from "../GlobalFeed/GlobalFeed";
 import Tags from "../Tags/Tags";
 import TagsListing from "../Tags/TagsListing";
 import UserFeed from "../UserFeed";
 import Banner from "./Banner";
 import "./FeedMaster.css";
+import TabsList from "./TabsList";
 
 const TabPanel = (props: any) => {
   const { children, value, index, ...other } = props;
@@ -57,24 +58,15 @@ const FeedMaster: React.FC = () => {
       <Banner profile={false} />
       <div className="container">
         <div>
-          <AppBar position="static">
-            <Tabs value={value} onChange={handleChange}>
-              <Tab label="Global Feed" />
-              <Tab label="Your Feed" />
-              {showTags ? (
-                <Tab label={"#" + tagName} selected={showTags} />
-              ) : null}
-            </Tabs>
-          </AppBar>
-          <TabPanel value={value} index={0}>
-            <GlobalFeed />
-          </TabPanel>
-          <TabPanel value={value} index={1}>
-            <UserFeed />
-          </TabPanel>
-          <TabPanel value={value} index={2}>
-            <TagsListing tagApi={tagApi} tagName={tagName} />
-          </TabPanel>
+          {
+            <TabsList
+              value={value}
+              handleChange={handleChange}
+              showTags={showTags}
+              tagName={tagName}
+              tagApi={tagApi}
+            />
+          }
         </div>
         <div>
           <Tags tagsHandler={tagsHandler} />

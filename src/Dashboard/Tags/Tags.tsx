@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../eaxios";
 import { Modal } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import { modalStyles, getModalStyle } from "../../Utils/StyleUtils";
 import "./Tags.css";
 interface Props {
@@ -41,12 +42,13 @@ const Tags: React.FC<Partial<Props>> = (props) => {
           {tags?.length > 0
             ? tags.map((tag) => {
                 return (
-                  <a
+                  <Link
+                    to="#"
                     className="tags-default tag-pill"
                     onClick={() => props.tagsHandler(tag)}
                   >
                     {tag}
-                  </a>
+                  </Link>
                 );
               })
             : "Populating tags.."}
