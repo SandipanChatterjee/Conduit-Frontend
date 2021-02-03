@@ -3,9 +3,9 @@ import { Modal } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import axios from "../../eaxios";
 import { getModalStyle, modalStyles } from "../../Utils/StyleUtils";
-import Pagination from "../Paginate";
+import Pagination from "../../Paginate";
 import "./GlobalFeed.css";
-import Display from "../DisplayArticle/Display";
+import Display from "../../DisplayArticle/Display";
 
 const GlobalFeed: React.FC = (props) => {
   const [articles, setArticle] = useState<{}[]>([]);

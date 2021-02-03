@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import Pagination from "../Paginate";
+import Pagination from "../../Paginate";
 import axios from "../../eaxios";
-import Display from "../DisplayArticle/Display";
+import Display from "../../DisplayArticle/Display";
 interface Props {
   tagApi: boolean;
   tagName: string;
