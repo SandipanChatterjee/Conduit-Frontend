@@ -1,15 +1,17 @@
 import React from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import FeedMaster from "../Dashboard/FeedMaster/FeedMaster";
-import Profile from "../ProfileMaster/Profile/Profile";
 import ProfileMaster from "../ProfileMaster/ProfileMaster/ProfileMaster";
+import ProfileRoutes from "./ProfileRoutes";
 const index = () => {
   return (
-    <div>
-      <Route path="/:profile" component={ProfileMaster} />
+    <Switch>
+      <Route path="/:profile">
+        <ProfileRoutes />
+      </Route>
       <Route path="/" exact component={FeedMaster} />
       <Redirect from="/" to="/" />
-    </div>
+    </Switch>
   );
 };
 

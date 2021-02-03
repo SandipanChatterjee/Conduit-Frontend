@@ -1,37 +1,8 @@
-import { AppBar, Box, Tab, Tabs, Typography } from "@material-ui/core";
-import PropTypes from "prop-types";
-import React, { Fragment, useState } from "react";
-import GlobalFeed from "../GlobalFeed/GlobalFeed";
+import React, { useState } from "react";
+import TabsList from "../../TabsList/TabsList";
 import Tags from "../Tags/Tags";
-import TagsListing from "../Tags/TagsListing";
-import UserFeed from "../UserFeed";
 import Banner from "./Banner";
 import "./FeedMaster.css";
-import TabsList from "./TabsList";
-
-const TabPanel = (props: any) => {
-  const { children, value, index, ...other } = props;
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box p={3}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-};
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired,
-};
 
 const FeedMaster: React.FC = () => {
   const [value, setValue] = useState<number>(0);
